@@ -1,6 +1,6 @@
 var dataset_url = "https://raw.githubusercontent.com/codertimo/kookmin-bab/master/data/dataset.json";
 var urlParams = new URLSearchParams(window.location.search);
-var target_id = urlParams.get("id");
+var target_id = urlParams.get("go");
 var target_info = null;
 
 $.getJSON(dataset_url, function (data) {
