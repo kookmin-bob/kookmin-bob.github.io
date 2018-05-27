@@ -49,8 +49,7 @@ function get_random_place(selected_tags, callback) {
 
 
 
-function click_button() {
-    var selected_tags = ["밥", "배달안됨"];
+function click_button(selected_tags) {
     get_random_place(selected_tags, move_page)
 }
 
@@ -59,3 +58,5 @@ function move_page(place_tag) {
     console.log("move place to "+place_tag);
 }
 
+var selected_tags = ["밥", "배달안됨"];
+click_button(selected_tags);
