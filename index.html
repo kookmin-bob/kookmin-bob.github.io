@@ -2,20 +2,19 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>국민밥</title>
+
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!--
+    Bootstrap 라이브러리를 참조하는 코드입니다
+    -->
     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
-
-
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
@@ -23,11 +22,16 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <!--참조해서 사용하는 파일들-->
     <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
+        <!--
+        가운데 정렬을 위해서 앞 뒤로 col-lg-2사이즈의 공간을 남겨두었음
+        -->
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <div id="title_view">
@@ -36,6 +40,11 @@
                 <h5>선호테그를 선택해주세요</h5>
             </div>
             <div id="menu_tags">
+                <!--Bootstrap에서는 총 12개의 COL이 존재한다
+                Responsive한 웹을 위해서 각 브라우저 별로 할당하는 크기를 조절했다
+                md : 중간 크기 브라우저, lg : 데스크탑 노트북, col- 작은 사이즈 스마트폰
+                -->
+
                 <div class="row center five-items">
                     <button class="col-md-3 col-lg-2 col-5 menu">한식</button>
                     <button class="col-md-3 col-lg-2 col-5 menu">중식</button>
@@ -64,11 +73,13 @@
         </div>
         <div class="col-lg-2"></div>
     </div>
+
     <div class="row" id="finish_view">
         <div class="center">
             <button id="finish_button">다 선택했어요!</button>
         </div>
     </div>
+
     <footer class="center">
         <p><a href="">세상에... 이런걸 누가 만들어 주신거죠</a></p>
         <p><a href="update_form.html">새로운 음식점 등록하기</a></p>

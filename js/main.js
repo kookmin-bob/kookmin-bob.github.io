@@ -1,11 +1,7 @@
-/**
- * Created by codertimo on 2018. 5. 27..
- */
-
 var dataset_url = 'https://api.jsonbin.io/b/5b0a87e87a973f4ce578489c/latest';
 
 function get_random_place(selected_tags, callback) {
-
+    // 전제 음식점 목록을 json으로 받아옴
     $.ajax({
         url: dataset_url,
         type: 'GET',
@@ -13,6 +9,7 @@ function get_random_place(selected_tags, callback) {
             'secret-key': "$2a$10$SkSaaKkfgtSNiIXcMXVNdukuLK..PoUusrTVSJEUwnwEEVVcsewWa"
         },
         success: function (data) {
+            // data가 전체 받아온 음식점 리스트
             var randArray = [];
             // 1. 위에 있는 data 중에서 select tag에 부합하는 모든 음식점 검색
             for(var key in data){
@@ -35,18 +32,22 @@ function get_random_place(selected_tags, callback) {
     });
 }
 
+// 이벤트 핸들러
 function click_button(selected_tags) {
+    // 인자로 선택된 테그들과, 랜덤 선택이 완료되었을때 callback 받을 함수를 지정함
     get_random_place(selected_tags, move_page)
 }
 
-
+// 페이지 이동하는 스크립트
 function move_page(place_tag) {
+    // 뒤에 인자로 go라는것을 주어서 다음페이지에서 어떤 음식점이 선택됬는지 알 수 있도록 함
     window.location.href = "detail.html?go="+place_tag;
     // console.log(place_tag);
 }
 
-
+// 이벤트 핸들러들을 등록하기 위해서 window ready checking
 $(document).ready(function () {
+    // 메뉴가 클릭되었을 때 배경색 변경이 유지되도록
     $(".menu").click(function () {
         if($(this).attr("check")=="true"){
             $(this).attr("check", false);
@@ -60,6 +61,7 @@ $(document).ready(function () {
         }
     });
 
+    // 다 골랐을때 고른 테그들의 리스트를 모아서 click_button호출
     $("#finish_button").click(function () {
         var selected_tags = [];
         var menus = $(".menu");
