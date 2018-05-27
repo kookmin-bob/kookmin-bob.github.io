@@ -38,10 +38,18 @@ function get_random_place(selected_tags, callback) {
         // 예시는 위에 선언된 json과 똑같음
         console.log(data);
 
+        // tag에 부합하는 음식점태그를 저장하는 배열
+        var randArray = [];
         // 1. 위에 있는 data 중에서 select tag에 부합하는 모든 음식점 검색
-
+        while(!data){
+            if(selected_tags in data['hash_tags']){
+                randArray[randArray.length] = Object.keys(data);
+            }
+        }
         // 2. 선택된 음식점들중 random으로 하나 선택
-        var final_place = 44444;
+        var final_place = randArray[Math.random()*randArray.length];
+
+        return final_place;
         // 해당되는 음식점의 tag : 44444 를 리턴하면 됨
         callback(final_place);
     });
