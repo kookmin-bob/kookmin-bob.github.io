@@ -11,6 +11,7 @@ $.getJSON(dataset_url, function (data) {
     $("#eng_title").text(target_info.eng_name);
     $("#address").text(target_info.address);
     $("#description").text(target_info.description);
+    $("#main_image").src=target_info.images[0];
 
     var tag_str = "";
     target_info.hash_tags.forEach(function (e) {

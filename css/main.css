@@ -32,7 +32,7 @@ h5{
     border-radius: 30px;
     text-align: center;
     font-size: 1.2em;
-    width: 150px;
+    /*width: 150px;*/
     height: 50px;
     color: white;
     margin: 10px;
@@ -44,6 +44,8 @@ h5{
 
 .center{
     margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 /*#menu_tags .row{*/
@@ -78,6 +80,9 @@ h5{
 
 hr{
     background-color: white;
+    /*margin-right: 30%;*/
+    /*margin-left: 30%;*/
+    width: 50%;
 }
 
 footer p{
@@ -85,4 +90,7 @@ footer p{
     color: white;
 }
 
-
+#menu_tags{
+    margin-right: 10%;
+    margin-left: 10%;
+}

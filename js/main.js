@@ -35,7 +35,7 @@ function click_button(selected_tags) {
 
 
 function move_page(place_tag) {
-    window.location.href = "http://kookmin-bob.github.io/detail.html?go="+place_tag;
+    window.location.href = "detail.html?go="+place_tag;
     // console.log(place_tag);
 }
 
