@@ -49,7 +49,6 @@ function get_random_place(selected_tags, callback) {
         // 2. 선택된 음식점들중 random으로 하나 선택
         var final_place = randArray[Math.random()*randArray.length];
 
-        return final_place;
         // 해당되는 음식점의 tag : 44444 를 리턴하면 됨
         callback(final_place);
     });
