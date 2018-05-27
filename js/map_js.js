@@ -1,4 +1,4 @@
-var dataset_url = "https://raw.githubusercontent.com/codertimo/kookmin-bab/master/data/dataset.json";
+var dataset_url = "https://raw.githubusercontent.com/kookmin-bob/kookmin-bob.github.io/master/data/dataset.json";
 var urlParams = new URLSearchParams(window.location.search);
 var target_id = urlParams.get("go");
 var target_info = null;
@@ -11,7 +11,13 @@ $.getJSON(dataset_url, function (data) {
     $("#eng_title").text(target_info.eng_name);
     $("#address").text(target_info.address);
     $("#description").text(target_info.description);
-    $("#main_image").src=target_info.images[0];
+    if(target_info.images.length!=0){
+        console.log(target_info.images);
+        $("#main_image").src=target_info.images[0];
+    }
+    else{
+        $("#main_image").css("visibility", "hidden");
+    }
 
     var tag_str = "";
     target_info.hash_tags.forEach(function (e) {
