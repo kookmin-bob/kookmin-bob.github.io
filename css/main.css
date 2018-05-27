@@ -89,7 +89,10 @@ footer p{
     text-align: center;
     color: white;
 }
-
+.five-items{
+    margin-right: 5%;
+    margin-left: 5%;
+}
 #menu_tags{
     margin-right: 10%;
     margin-left: 10%;
