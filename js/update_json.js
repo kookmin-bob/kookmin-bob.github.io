@@ -27,7 +27,7 @@ $(document).ready(function () {
             "address": $("#place_address").val(),
             "images": [$("#place_image").val()],
             "phone": $("#place_phone").val(),
-            "hash_tags": $("#place_tag").val().replace("#", "").split(" "),
+            "hash_tags": $("#place_tag").val().replace(/#/gi, "").split(" "),
             "writer": {
                 "name": $("#writer_name").val(),
                 "email": $("#writer_email").val()
@@ -47,6 +47,9 @@ $(document).ready(function () {
                 }
             ]
         };
+
+        console.log(info);
+        console.log(info["hash_tags"]);
 
         // 전체 정보를 새로운 json에 할당하기 위해서 기존 json을 로딩함
         $.ajax({
