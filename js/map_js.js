@@ -37,7 +37,7 @@ $.ajax({
     },
     // 받아오기에 성공시
     success: function (data) {
-        console.log(data);
+        // console.log(data);
         // 전체 데이터중 target_id 즉 선택된 음식점의 정보를 선택함.
         target_info = data[target_id];
 
@@ -52,7 +52,7 @@ $.ajax({
 
         // 다중 이미지 또는 이미지가 없을때의 handling
         if(target_info.images.length!=0){
-            console.log(target_info.images);
+            // console.log(target_info.images);
             $("#main_image").attr("src", target_info.images[0]);
         }
         else{
@@ -69,7 +69,7 @@ $.ajax({
         // 각 가격에 대한 동적 UI 할당
         target_info.menus.forEach(function (e) {
             $("#menus").append("<li>" + e.name + " - " + e.price + "원</li>");
-            console.log(e);
+            // console.log(e);
         });
 
         if(target_info.phone != null){

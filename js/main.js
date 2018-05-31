@@ -13,14 +13,17 @@ function get_random_place(selected_tags, callback) {
             var randArray = [];
             // 1. 위에 있는 data 중에서 select tag에 부합하는 모든 음식점 검색
             for(var key in data){
-                console.log(data[key]);
-                for(var tag in selected_tags){
-                    if(tag in data[key]['hash_tags']){
+                // console.log(data[key]);
+                for(var tag_id in selected_tags){
+                    var tag = selected_tags[tag_id];
+                    console.log(data[key]['hash_tags']+" "+tag+" "+data[key]['hash_tags'].includes(tag));
+                    if(data[key]['hash_tags'].includes(tag)){
                         randArray[randArray.length] = key;
                         break;
                     }
                 }
             }
+            console.log(randArray);
             // 2. 선택된 음식점들중 random으로 하나 선택
             var final_place = randArray[Math.floor(Math.random()*randArray.length)];
             // 해당되는 음식점의 tag : 44444 를 리턴하면 됨
