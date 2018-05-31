@@ -16,7 +16,7 @@ function get_random_place(selected_tags, callback) {
                 // console.log(data[key]);
                 for(var tag_id in selected_tags){
                     var tag = selected_tags[tag_id];
-                    console.log(data[key]['hash_tags']+" "+tag+" "+data[key]['hash_tags'].includes(tag));
+                    // console.log(data[key]['hash_tags']+" "+tag+" "+data[key]['hash_tags'].includes(tag));
                     if(data[key]['hash_tags'].includes(tag)){
                         randArray[randArray.length] = key;
                         break;
@@ -27,7 +27,7 @@ function get_random_place(selected_tags, callback) {
             // 2. 선택된 음식점들중 random으로 하나 선택
             var final_place = randArray[Math.floor(Math.random()*randArray.length)];
             // 해당되는 음식점의 tag : 44444 를 리턴하면 됨
-            callback(final_place);
+            callback(final_place, selected_tags);
         },
         error: function (err) {
             console.log(err);
@@ -42,9 +42,10 @@ function click_button(selected_tags) {
 }
 
 // 페이지 이동하는 스크립트
-function move_page(place_tag) {
+function move_page(place_tag, selected_tags) {
     // 뒤에 인자로 go라는것을 주어서 다음페이지에서 어떤 음식점이 선택됬는지 알 수 있도록 함
-    window.location.href = "detail.html?go="+place_tag;
+    var url =  "detail.html?go="+place_tag+"&tags="+selected_tags.join(",");
+    window.location.href = encodeURI(url);
     // console.log(place_tag);
 }
 

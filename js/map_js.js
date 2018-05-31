@@ -4,6 +4,7 @@ var dataset_url = "https://api.jsonbin.io/b/5b0a87e87a973f4ce578489c/latest";
 // 이 값이 어떤 음식점이 선택됬는지 알려주고 있음
 var urlParams = new URLSearchParams(window.location.search);
 var target_id = urlParams.get("go");
+var selected_tags = urlParams.get("tags").split(",");
 var target_info = null;
 
 //구글 지도를 init해주는 함수
@@ -85,3 +86,57 @@ $.ajax({
     }
 });
 
+function get_random_place(selected_tags, callback) {
+    // 전제 음식점 목록을 json으로 받아옴
+    $.ajax({
+        url: dataset_url,
+        type: 'GET',
+        headers: { //Required only if you are trying to access a private bin
+            'secret-key': "$2a$10$SkSaaKkfgtSNiIXcMXVNdukuLK..PoUusrTVSJEUwnwEEVVcsewWa"
+        },
+        success: function (data) {
+            // data가 전체 받아온 음식점 리스트
+            var randArray = [];
+            // 1. 위에 있는 data 중에서 select tag에 부합하는 모든 음식점 검색
+            for(var key in data){
+                // console.log(data[key]);
+                for(var tag_id in selected_tags){
+                    var tag = selected_tags[tag_id];
+                    // console.log(data[key]['hash_tags']+" "+tag+" "+data[key]['hash_tags'].includes(tag));
+                    if(data[key]['hash_tags'].includes(tag)){
+                        randArray[randArray.length] = key;
+                        break;
+                    }
+                }
+            }
+            console.log(randArray);
+            // 2. 선택된 음식점들중 random으로 하나 선택
+            var final_place = randArray[Math.floor(Math.random()*randArray.length)];
+            // 해당되는 음식점의 tag : 44444 를 리턴하면 됨
+            callback(final_place, selected_tags);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+// 이벤트 핸들러
+function click_button(selected_tags) {
+    // 인자로 선택된 테그들과, 랜덤 선택이 완료되었을때 callback 받을 함수를 지정함
+    get_random_place(selected_tags, move_page)
+}
+
+// 페이지 이동하는 스크립트
+function move_page(place_tag, selected_tags) {
+    // 뒤에 인자로 go라는것을 주어서 다음페이지에서 어떤 음식점이 선택됬는지 알 수 있도록 함
+    var url =  "detail.html?go="+place_tag+"&tags="+selected_tags.join(",");
+    window.location.href = encodeURI(url);
+    // console.log(place_tag);
+}
+
+$(document).ready(function () {
+    $("#find_another_link").click(function () {
+       click_button(selected_tags);
+    });
+});
