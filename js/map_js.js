@@ -68,8 +68,14 @@ $.ajax({
 
         // 각 가격에 대한 동적 UI 할당
         target_info.menus.forEach(function (e) {
-            $("#menus").add("<li>" + e.name + " - " + e.price + "원</li>");
+            $("#menus").append("<li>" + e.name + " - " + e.price + "원</li>");
+            console.log(e);
         });
+
+        if(target_info.phone != null){
+            $("#phone_number").text("전화 걸기 : "+ target_info.phone);
+            $("#phone_number").attr("href", "tel:"+target_info.phone);
+        }
 
         // 지도 생성 호출
         initMap();
